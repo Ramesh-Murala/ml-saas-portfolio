@@ -1,18 +1,13 @@
-# Customer Sentiment Analysis API
+# Sentiment Analysis Prototype
 
-An enterprise-grade Sentiment Analysis API and React Dashboard.
+Uses a pretrained HuggingFace sentiment pipeline. If loading fails, the API returns 503; it never silently replaces the model with keyword rules. Recover model availability and restart the service to reload. Scores are model outputs, not calibrated guarantees.
 
-## Features
-- FastAPI backend with ML capabilities
-- React frontend using Vite
-- Dockerized setup
-
-## How to run
+FastAPI backend and React frontend, intended for local demonstrations.
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
-Then visit:
-- Frontend: `http://localhost:3000`
-- Backend API Docs: `http://localhost:8000/docs`
+Frontend: `http://localhost:3000`. Backend documentation: `http://localhost:8000/docs`.
+
+See the [repository overview](../README.md) for implementation boundaries and tests. This prototype has not been validated for production deployment.

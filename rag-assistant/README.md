@@ -1,13 +1,13 @@
-# Enterprise Knowledge Assistant (RAG SaaS)
+# Document Search Prototype
 
-This is a RAG-based SaaS application split into a FastAPI backend and a React frontend.
+Uses scikit-learn TF-IDF and cosine similarity over in-memory documents. The answer is a retrieved snippet; there is no LLM generation, FAISS index, or dense embedding model.
 
-## Quick Start
+FastAPI backend and React frontend, intended for local demonstrations.
 
-1. Start with Docker Compose:
-   ```bash
-   docker-compose up --build
-   ```
+```bash
+docker compose up --build
+```
 
-2. Open the frontend at `http://localhost:3000`
-3. The API runs at `http://localhost:8000`
+Frontend: `http://localhost:3000`. Backend documentation: `http://localhost:8000/docs`.
+
+See the [repository overview](../README.md) for implementation boundaries and tests. This prototype has not been validated for production deployment.

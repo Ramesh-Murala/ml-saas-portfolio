@@ -1,15 +1,13 @@
-# Real-Time Recommendation Engine
+# Recommendation UI Prototype
 
-This is a complete end-to-end Machine Learning SaaS application that provides real-time recommendations.
+Filters already-seen items and applies a stable seeded shuffle. This is mocked ranking, not collaborative filtering or a learned recommendation model.
 
-## Structure
+FastAPI backend and React frontend, intended for local demonstrations.
 
-- **Backend**: FastAPI app with mocked ML model recommendations.
-- **Frontend**: React application built with Vite, interacting with the recommendation backend.
+```bash
+docker compose up --build
+```
 
-## Run
+Frontend: `http://localhost:5173`. Backend documentation: `http://localhost:8000/docs`.
 
-1. Make sure you have Docker and Docker Compose installed.
-2. Run `docker-compose up --build`
-3. Access Frontend at `http://localhost:5173`
-4. Access Backend API at `http://localhost:8000`
+See the [repository overview](../README.md) for implementation boundaries and tests. This prototype has not been validated for production deployment.
