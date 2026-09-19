@@ -1,6 +1,7 @@
+from functools import lru_cache
 from services.nlp_service import NLPService
 
-_nlp_service_instance = NLPService()
 
+@lru_cache
 def get_nlp_service() -> NLPService:
-    return _nlp_service_instance
+    return NLPService()

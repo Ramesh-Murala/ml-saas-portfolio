@@ -1,22 +1,13 @@
-# Enterprise Fraud Detection SaaS MVP
+# Fraud API/UI Prototype
 
-This is an end-to-end full-stack machine learning application for fraud detection.
+Uses `DummyFraudModel`: transaction-amount thresholds return fixed demonstration scores. No model is trained and the scores are not calibrated fraud probabilities.
 
-## Architecture
-
-- **Backend**: FastAPI with Python. Incorporates mock ML inference logic mimicking an ensemble model checking transaction features.
-- **Frontend**: React (Vite). Displays real-time transaction simulation, metrics, and risk assessment via a sleek UI.
-
-## How to Run
-
-Use Docker Compose to spin up both the backend and frontend simultaneously:
+FastAPI backend and React frontend, intended for local demonstrations.
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
-- Frontend UI: http://localhost:3000
-- Backend API Docs: http://localhost:8000/api/v1/openapi.json
+Frontend: `http://localhost:3000`. Backend documentation: `http://localhost:8000/docs`.
 
-## Components
-The project architecture strictly follows enterprise standards, decoupled into modular routers, schemas, services, and core configuration elements.
+See the [repository overview](../README.md) for implementation boundaries and tests. This prototype has not been validated for production deployment.

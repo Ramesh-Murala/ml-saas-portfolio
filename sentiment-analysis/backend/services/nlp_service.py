@@ -1,26 +1,24 @@
-from transformers import pipeline
+import logging
+
 from core.config import settings
 from utils.text_cleaner import clean_text
 
+logger = logging.getLogger(__name__)
+
+
 class NLPService:
-    def __init__(self):
+    def __init__(self, loader=None):
+        self.model = None
         try:
-            self.model = pipeline("sentiment-analysis", model=settings.MODEL_NAME)
-        except Exception:
-            # Fallback mock model if loading fails
-            self.model = None
+            if loader is None:
+                from transformers import pipeline
+                loader = pipeline
+            self.model = loader("sentiment-analysis", model=settings.MODEL_NAME)
+        except Exception as exc:
+            logger.warning("Sentiment model unavailable (%s)", type(exc).__name__)
 
     def analyze(self, text: str) -> dict:
-        cleaned_text = clean_text(text)
         if self.model is None:
-            # Mock implementation
-            if "bad" in cleaned_text.lower():
-                return {"text": text, "sentiment": "NEGATIVE", "confidence": 0.8}
-            return {"text": text, "sentiment": "POSITIVE", "confidence": 0.9}
-            
-        result = self.model(cleaned_text)[0]
-        return {
-            "text": text,
-            "sentiment": result["label"],
-            "confidence": float(result["score"])
-        }
+            raise RuntimeError("Sentiment model unavailable")
+        result = self.model(clean_text(text))[0]
+        return {"text": text, "sentiment": result["label"], "confidence": float(result["score"])}
